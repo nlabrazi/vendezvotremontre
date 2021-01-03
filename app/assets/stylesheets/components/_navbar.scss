@@ -1,0 +1,35 @@
+.navbar-mainbar {
+  justify-content: space-between;
+  background: #e83e8c;
+  position: sticky;
+  top: 0;
+  left:0;
+  z-index:5;
+}
+
+.navbar-mainbar .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-mainbar .navbar-brand img {
+  width: 40px;
+}
+
+.navbar-a {
+  color: #FFF;
+  &:hover{
+      color: #000;
+  }
+}
+
+
+#navbarDropdown{
+  transition-duration: .5s;
+  border: solid rgba($color: #000000, $alpha: 0) 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  &:hover{
+    background-color: #fff;
+    border: solid white 2px;
+  }
+}
