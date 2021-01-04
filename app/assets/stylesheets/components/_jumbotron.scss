@@ -1,0 +1,26 @@
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  -ms-transform: translateY(-40%);
+  -moz-transform: translateY(-40%);
+  -webkit-transofrm: translateY(-40%);
+  transform: translateY(-40%);
+}
+
+.jumbotron {
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  color: white;
+}
+
+.container {
+  position: relative;
+}
+
+.black-box {
+  background-color: rgba(0,0,0,0.2);
+}

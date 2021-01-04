@@ -1,0 +1,43 @@
+<div class="jumbotron jumbotron-fluid">
+ <video autoplay="" muted="" loop="">
+  <source src="https://storage.coverr.co/videos/Th016ucHQ8ijQH4NOR3dto02K6g00iEgWdk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjA5NzEyMDMwfQ.zBx2VC1i2kSFAXAo29h5CnSkML4IY1PGwqoAqL-0668" type="video/mp4">
+  </video>
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="home-top">
+    <h4>Evaluation gratuite de votre montre en 2 étapes</h4>
+
+
+
+<%= form_for :watch, url: {action: "show"}, html: {method: "get"} do |f| %>
+  <%= f.select :brand_id, options_for_select(@brands.collect { |brand| [brand.name, brand.id] }, 1), { id: 'brands_select' } %>
+  <%= f.select :model_id, options_for_select(@models.collect { |model| [model.name, model.id] }, 0), { id: 'models_select' } %>
+  <%= f.submit "Go!" %>
+<% end %>
+
+
+
+<!--
+    <label for="">Marque</label>
+    <%#= collection_select(:brand, :name, Brand.all, :id, :name, {prompt: false}, {:class=>'form-control form-control-lg'}) %>
+    <label for="">Modèle</label>
+    <%#= collection_select(:landmark, :model, Landmark.all, :id, :model, {prompt: false}, {:class=>'form-control form-control-lg'}) %>
+    <label for="">Année</label>
+    <%#= collection_select(:landmark, :year, Landmark.all, :id, :year, {prompt: false}, {:class=>'form-control form-control-lg'}) %>
+    <label for="">Rechercher</label>
+    <%#= form_tag models_path, class: "barsearch", method: :get do %>
+    <%#= text_field_tag :query, params[:query], class: "form-control search-input", placeholder:"Chercher votre montre..."%>
+    <%#= button_tag "> Estimer maintenant", class: "btn btn-primary", display: "none" %>
+    <%# end %>
+-->
+
+  </div>
+</div>
