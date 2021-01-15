@@ -1,22 +1,40 @@
-console.log("zbzbzbzb");
+$(function() {
 
-(function() {
-  $(function() {
-    return $(document).on('change', '#brands_select', function(evt) {
-      return $.ajax('update_models', {
-        type: 'GET',
-        dataType: 'script',
-        data: {
-          brand_id: $("#brands_select option:selected").val()
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          return console.log("AJAX Error: " + textStatus);
-        },
-        success: function(data, textStatus, jqXHR) {
-          return console.log("Dynamic brand select OK!");
-        }
-      });
-    });
+   if ($("select#brand").val() == "") {
+    $("select#model option").remove();
+    var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
+    $(row).appendTo("select#model");
+   }
+   $("select#brand").change(function() {
+    var id_value_string = $(this).val();
+    if (id_value_string == "") {
+     $("select#model option").remove();
+     var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
+     $(row).appendTo("select#model");
+    } else {
+     // Send the request and update model dropdown
+     $.ajax({
+      dataType: "json",
+      cache: false,
+      url: '/get_models_by_brand/' + id_value_string,
+      timeout: 5000,
+      error: function(XMLHttpRequest, errorTextStatus, error) {
+       alert("Failed to submit : " + errorTextStatus + " ;" + error);
+      },
+      success: function(data) {
+       // Clear all options from model select
+       $("select#model option").remove();
+       //put in a empty default line
+       var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
+       $(row).appendTo("select#model");
+       // Fill model select
+       $.each(data, function(i, j) {
+        row = "<option value=\"" + j.id + "\">" + j.title + "</option>";
+        $(row).appendTo("select#model");
+       });
+      }
+     });
+    }
+   });
+
   });
-
-}).call(this);
