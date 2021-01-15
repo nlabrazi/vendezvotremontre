@@ -4,10 +4,6 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  get 'pages/update_models', as: 'update_models'
-  get 'pages/show'
-
-
   resources :models
   resources :watches
 
