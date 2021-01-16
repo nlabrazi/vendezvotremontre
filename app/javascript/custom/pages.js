@@ -1,40 +1,43 @@
+console.log("Begin");
+
+// $(function () {
+//     var gameConsoleOptions = $('.watch_model_id option');
+//     console.log("Game " + gameConsoleOptions);
+//     $(".watch_brand_id").on("change", function () {
+//         var label = $(this).find("option:selected").closest('optgroup').prop('label');
+//         console.log("Label " + label);
+//         if (label) {
+//             gameConsoleOptions.hide();
+//             gameConsoleOptions.filter(function (i, v) {
+//                 return $(v).text() === label;
+//             }).show();
+//         } else {
+//             gameConsoleOptions.show();
+//         }
+//       console.log("Game After " + gameConsoleOptions);
+//     });
+// });
+
+$.fn.filterGroups = function( options ) {
+  var settings = $.extend( {}, options);
+
+  return this.each(function(){
+
+    var $select = $(this);
+        // Clone the optgroups to data, then remove them from dom
+        $select.data('fg-original-groups', $select.find('optgroup').clone()).children('optgroup').remove();
+
+        $(settings.groupSelector).change(function(){
+          var $this = $(this);
+          var optgroup_label = $this.val();
+          var $optgroup =  $select.data('fg-original-groups').filter('optgroup[label="' + optgroup_label + '"]').clone();
+          $select.children('optgroup').remove();
+          $select.append($optgroup);
+        }).change();
+
+      });
+};
+
 $(function() {
-
-   if ($("select#brand").val() == "") {
-    $("select#model option").remove();
-    var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
-    $(row).appendTo("select#model");
-   }
-   $("select#brand").change(function() {
-    var id_value_string = $(this).val();
-    if (id_value_string == "") {
-     $("select#model option").remove();
-     var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
-     $(row).appendTo("select#model");
-    } else {
-     // Send the request and update model dropdown
-     $.ajax({
-      dataType: "json",
-      cache: false,
-      url: '/get_models_by_brand/' + id_value_string,
-      timeout: 5000,
-      error: function(XMLHttpRequest, errorTextStatus, error) {
-       alert("Failed to submit : " + errorTextStatus + " ;" + error);
-      },
-      success: function(data) {
-       // Clear all options from model select
-       $("select#model option").remove();
-       //put in a empty default line
-       var row = "<option value=\"" + "" + "\">" + "Model" + "</option>";
-       $(row).appendTo("select#model");
-       // Fill model select
-       $.each(data, function(i, j) {
-        row = "<option value=\"" + j.id + "\">" + j.title + "</option>";
-        $(row).appendTo("select#model");
-       });
-      }
-     });
-    }
-   });
-
-  });
+  $('#watch_model_id').filterGroups({groupSelector: '#watch_brand_id', });
+});

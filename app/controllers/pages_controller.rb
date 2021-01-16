@@ -4,8 +4,4 @@ class PagesController < ApplicationController
     @watch = Watch.new
   end
 
-  def new
-
-  end
-
 end

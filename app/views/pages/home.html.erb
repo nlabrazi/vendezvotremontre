@@ -19,11 +19,11 @@
       <%= simple_form_for [ @watch ] do |f| %>
       <div class="field">
         <%= f.label :brand_id, "Selectionnez la Marque" %><br />
-        <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, {prompt: "Marque"}, {class: "form-control form-control-lg"} %>
+        <%= f.collection_select :brand_id, Brand.order(:name), :name, :name, {prompt: "Marque"}, {class: "form-control form-control-lg watch_brand_id"} %>
       </div>
       <div class="field">
         <%= f.label :model_id, "Choisissez le Modèle" %><br />
-        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg"} %>
+        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg watch_model_id"} %>
       </div>
       <div class="actions"><%= f.submit class:'btn btn-primary' %></div>
       <% end %>
@@ -32,23 +32,105 @@
   </div>
 </div>
 
+
 <script>
-  (function() {
-    var models;
-    $('#watch_model_id').parent().hide();
-    models = $('#watch_model_id').html();
-    return $('#watch_brand_id').change(function() {
-      var brand, escaped_brand, options;
-      brand = $('#watch_brand_id :selected').text();
-      escaped_brand = brand.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
-      options = $(models).filter("optgroup[label='" + escaped_brand + "']").html();
-      if (options) {
-        $('#watch_model_id').html(options);
-        return $('#watch_model_id').parent().show();
-      } else {
-        $('#watch_model_id').empty();
-        return $('#watch_model_id').parent().hide();
-      }
-    });
+
+// document.getElementById("watch_brand_id").classList.add("font-weight-bold");
+
+function brand() {
+  const checkBrand = document.getElementById('watch_brand_id');
+  checkBrand.addEventListener('change', (e) => {
+    console.log(`e.brand.value = ${ e.target.value }`);
   });
+};
+
+function model() {
+  const checkModel = document.getElementById('watch_model_id');
+  checkModel.addEventListener('change', (e) => {
+    console.log(`e.model.value = ${ e.target.value }`);
+  });
+};
+
+//brand();
+//model();
+
+function swapGoodModel() {
+  var optGroup = document.getElementsByTagName("optgroup")[1];
+  document.getElementById('watch_brand_id').addEventListener("change", function() {
+    if (this.value == "") {
+      console.log('RIEN SELECTIONNE');
+    } else if (this.value == 1) {
+      optGroup.style.display = "none";
+      console.log('ROLEX');
+    } else if (this.value == 2) {
+      console.log('ORIX');
+    } else if (this.value == 3) {
+      console.log('IWC');
+    } else if (this.value == 4) {
+      console.log('SEIKO');
+    } else if (this.value == 5) {
+     console.log('LONGINES');
+   } else if (this.value == 6) {
+     console.log('HUBLOT');
+   } else if (this.value == 7) {
+     console.log('OMEGA');
+   } else {
+    console.log("RIEN COMPRIS")
+  }
+});
+};
+//swapGoodModel();
+
+
+
+function swapGoodBrand() {
+  var brandSelect = document.getElementById('watch_brand_id').value;
+  brandSelect.addEventListener("change", function() {
+    switch (brandSelect) {
+      case "":
+      console.log("RIEN de choisi");
+      break;
+      case 1:
+      console.log("Choix 1");
+      break;
+      case 2:
+      console.log("Choix 2");
+      break;
+      case 3:
+      console.log("Choix 3");
+      break;
+      case 4:
+      console.log("Choix 3");
+      break;
+      default:
+      console.log("Désolé, rien compris");
+    }
+  });
+};
+
+//swapGoodBrand();
+
+
+function another() {
+  var gameConsoleOptions = document.querySelector('.watch_brand_id option');
+console.log(gameConsoleOptions);
+  document.querySelector(".watch_model_id").addEventListener("change", function () {
+    var label = document.querySelector("option:checked").closest('optgroup')//.property('label');
+    console.log(label);
+    if (label) {
+      gameConsoleOptions.hide();
+      gameConsoleOptions.filter(function (i, v) {
+        return document.querySelector(v).text() === label;
+      }).show();
+    }else{
+      gameConsoleOptions.show();
+    }
+  });
+};
+
+//another();
+
+
 </script>
+
+
