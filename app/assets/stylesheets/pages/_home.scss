@@ -2,8 +2,12 @@
 
 #pages-home {
 
-  .home-top, .home-policy, .home-box, .home-newsletter, .home-carousel {
+  .home-top {
     margin-top: 20px;
+  }
+
+  .home-top-btn {
+    text-align: center;
   }
 
 }

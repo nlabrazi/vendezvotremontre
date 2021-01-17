@@ -1,7 +1,8 @@
 class WatchesController < ApplicationController
 
   def new
-    @watch = Watch.new
+    @watch = Watch.new(watch_params)
+    # @brand = Brand.find(params[:brand_id])
   end
 
   def create
@@ -22,7 +23,7 @@ class WatchesController < ApplicationController
   end
 
   def watch_params
-    params.require(:watch).permit(:price)
+    params.require(:watch).permit(:model_id)
   end
 
 end

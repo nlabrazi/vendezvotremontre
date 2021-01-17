@@ -13,124 +13,31 @@
 
 <div class="container">
   <div class="home-top">
-    <div class="col-md-6 col-sm-7 mb-md selector">
-      <h4>Evaluation de votre montre en quelques secondes !</h4>
+    <div class="home-box">
 
-      <%= simple_form_for [ @watch ] do |f| %>
-      <div class="field">
+      <div class="home-top-form">
+        <h4>Evaluation de votre montre en quelques secondes !</h4>
+        <%= simple_form_for [ @watch ], method: :get, url:new_watch_path do |f| %>
         <%= f.label :brand_id, "Selectionnez la Marque" %><br />
-        <%= f.collection_select :brand_id, Brand.order(:name), :name, :name, {prompt: "Marque"}, {class: "form-control form-control-lg watch_brand_id"} %>
-      </div>
-      <div class="field">
+        <%= f.collection_select :brand_id, Brand.order(:name), :name, :name, {prompt: "Marque"}, {class: "form-control form-control-lg"} %>
+        <br>
         <%= f.label :model_id, "Choisissez le Modèle" %><br />
-        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg watch_model_id"} %>
+        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg"} %>
       </div>
-      <div class="actions"><%= f.submit class:'btn btn-primary' %></div>
+      <br>
+      <div class="home-top-btn">
+        <%#= f.button :submit, "Estimer votre montre", class: "btn btn-primary btn-lg" %>
+        <%#= link_to "Estimer votre montre", new_watch_path(@watch), class: "btn btn-primary btn-lg" %>
+        <%= button_tag "Estimer maintenant", class: "btn btn-primary btn-lg", display: "none" %>
+        <!-- <div class="actions"><%#= f.submit class:'btn btn-primary' %></div> -->
+      </div>
+
       <% end %>
-
     </div>
+
   </div>
+
+
 </div>
-
-
-<script>
-
-// document.getElementById("watch_brand_id").classList.add("font-weight-bold");
-
-function brand() {
-  const checkBrand = document.getElementById('watch_brand_id');
-  checkBrand.addEventListener('change', (e) => {
-    console.log(`e.brand.value = ${ e.target.value }`);
-  });
-};
-
-function model() {
-  const checkModel = document.getElementById('watch_model_id');
-  checkModel.addEventListener('change', (e) => {
-    console.log(`e.model.value = ${ e.target.value }`);
-  });
-};
-
-//brand();
-//model();
-
-function swapGoodModel() {
-  var optGroup = document.getElementsByTagName("optgroup")[1];
-  document.getElementById('watch_brand_id').addEventListener("change", function() {
-    if (this.value == "") {
-      console.log('RIEN SELECTIONNE');
-    } else if (this.value == 1) {
-      optGroup.style.display = "none";
-      console.log('ROLEX');
-    } else if (this.value == 2) {
-      console.log('ORIX');
-    } else if (this.value == 3) {
-      console.log('IWC');
-    } else if (this.value == 4) {
-      console.log('SEIKO');
-    } else if (this.value == 5) {
-     console.log('LONGINES');
-   } else if (this.value == 6) {
-     console.log('HUBLOT');
-   } else if (this.value == 7) {
-     console.log('OMEGA');
-   } else {
-    console.log("RIEN COMPRIS")
-  }
-});
-};
-//swapGoodModel();
-
-
-
-function swapGoodBrand() {
-  var brandSelect = document.getElementById('watch_brand_id').value;
-  brandSelect.addEventListener("change", function() {
-    switch (brandSelect) {
-      case "":
-      console.log("RIEN de choisi");
-      break;
-      case 1:
-      console.log("Choix 1");
-      break;
-      case 2:
-      console.log("Choix 2");
-      break;
-      case 3:
-      console.log("Choix 3");
-      break;
-      case 4:
-      console.log("Choix 3");
-      break;
-      default:
-      console.log("Désolé, rien compris");
-    }
-  });
-};
-
-//swapGoodBrand();
-
-
-function another() {
-  var gameConsoleOptions = document.querySelector('.watch_brand_id option');
-console.log(gameConsoleOptions);
-  document.querySelector(".watch_model_id").addEventListener("change", function () {
-    var label = document.querySelector("option:checked").closest('optgroup')//.property('label');
-    console.log(label);
-    if (label) {
-      gameConsoleOptions.hide();
-      gameConsoleOptions.filter(function (i, v) {
-        return document.querySelector(v).text() === label;
-      }).show();
-    }else{
-      gameConsoleOptions.show();
-    }
-  });
-};
-
-//another();
-
-
-</script>
 
 
