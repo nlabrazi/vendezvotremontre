@@ -46,16 +46,43 @@ p "-----------------------"
 puts "#{tp User.all}"
 
 
+p "Creating scopes..."
+
+Full    = Scope.create! name:"Full Set", id: 1
+Paper   = Scope.create! name:"Papers",   id: 2
+Box     = Scope.create! name:"Box",      id: 3
+Nothing = Scope.create! name:"Nothing",  id: 4
+
+p "#{Scope.count} created..."
+p "-----------------------"
+p "-----------------------"
+puts "#{tp Scope.all}"
+
+
+
+p "Creating conditions..."
+
+New    = Condition.create! name:"New",    id: 1
+Good   = Condition.create! name:"Good",   id: 2
+Bad    = Condition.create! name:"Bad",    id: 3
+Broken = Condition.create! name:"Broken", id: 4
+
+p "#{Condition.count} created..."
+p "-----------------------"
+p "-----------------------"
+puts "#{tp Condition.all}"
+
+
 
 p "Creating brands..."
 
-Rolex    = Brand.create! name: "Rolex", id: 1
-Oris     = Brand.create! name: "Oris", id: 2
-IWC      = Brand.create! name: "IWC", id: 3
-Seiko    = Brand.create! name: "Seiko", id: 4
-Longines = Brand.create! name: "Longines", id: 5
-Hublot   = Brand.create! name: "Hublot", id: 6
-Omega    = Brand.create! name: "Omega", id: 7
+Rolex    = Brand.create! name: "Rolex",     id: 1
+Oris     = Brand.create! name: "Oris",      id: 2
+IWC      = Brand.create! name: "IWC",       id: 3
+Seiko    = Brand.create! name: "Seiko",     id: 4
+Longines = Brand.create! name: "Longines",  id: 5
+Hublot   = Brand.create! name: "Hublot",    id: 6
+Omega    = Brand.create! name: "Omega",     id: 7
 
 p "#{Brand.count} created..."
 p "-----------------------"

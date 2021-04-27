@@ -1,42 +1,73 @@
-<div class="jumbotron jumbotron-fluid">
- <video autoplay="" muted="" loop="">
-  <source src="https://storage.coverr.co/videos/Th016ucHQ8ijQH4NOR3dto02K6g00iEgWdk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjA5NzEyMDMwfQ.zBx2VC1i2kSFAXAo29h5CnSkML4IY1PGwqoAqL-0668" type="video/mp4">
-  </video>
-  <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-    <p class="lead">
-      <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>
-  </div>
-</div>
+<div class="homehome">
 
-<div class="container">
-  <div class="home-top">
-    <div class="home-box">
-
-      <div class="home-top-form">
-        <h4>Evaluation de votre montre en quelques secondes !</h4>
-        <%= simple_form_for [@watch] do |f| %>
-        <%= f.label :brand_id, "Selectionnez la Marque" %><br />
-        <%= f.collection_select :brand_id, Brand.order(:name), :name, :name, {prompt: "Marque"}, {class: "form-control form-control-lg"} %>
-        <br>
-        <%= f.label :model_id, "Choisissez le Modèle" %><br />
-        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg"} %>
+  <div class="JumbotronDisplay jumbotron">
+    <div class="top-home">
+      <div class="p-0 m-0 row">
+        <div class="Jumbotron_col d-flex flex-column justify-content-center align-items-center text-center col-md-6 col-12">
+          <h1 class="display-4">Évaluation gratuite de votre montre en 2 étapes</h1>
+          <h3>La vie n’est pas un problème, c’est une solution</h3>
+          <div class="my-5">
+            <%= link_to "Estimer maintenant >", new_watch_path, class: "btn-flat btn btn-lg"  %>
+          </div>
+        </div>
+        <div class="Jumbotron_col d-lg-block col-md-6">
+          <div>
+            <div title="" role="button" aria-label="animation" tabindex="0" style="width: 100%; height: 100%; overflow: hidden; margin: 0px auto; outline: none;">
+              <lottie-player
+                autoplay
+                loop
+                mode="normal"
+                src="https://assets9.lottiefiles.com/packages/lf20_TLf4S8.json">
+              </lottie-player>
+            </div>
+          </div>
+        </div>
       </div>
-      <br>
-      <div class="home-top-btn">
-        <%#= f.button :submit, "Estimer votre montre", class: "btn btn-primary btn-lg" %>
-        <%= link_to "Estimer votre montre", new_watch_path(model_id: 1, brand_id: 29), class: "btn btn-primary btn-lg" %>
-        <%#= button_tag "Estimer maintenant", class: "btn btn-primary btn-lg", display: "none" %>
-      </div>
-      <% end %>
-
     </div>
-
   </div>
 
+  <div class='container'>
+    <div data-aos="fade-up" data-aos-duration="5000" class="card mb-3 second-bloc">
+      <div id='bloc-max-width'>
+        <%= cl_image_tag("https://res.cloudinary.com/def2ukbdr/image/upload/v1617716920/Hayride_Goes_To_The_Farm_Free_Vector_mw4grg.jpg", style:"max-width:100%") %>
+      </div>
+      <div>
+        <h2> Changez le regard que vous avez sur l'agriculture</h2>
+        <p> La production des cultures ne consommera que peu d’énergie : tendre vers l’autonomie énergétique, réduire les émissions de CO2, récupérer les énergies fatales, consommation d’énergie verte, …. et surtout une très faible consommation d’eau. </p>
+        <p> Farm Square inc. </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="third-bloc mb-5">
+    <div class="third-bloc-child">
+      <div data-aos="flip-left" data-aos-duration="1000" class="card">
+        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
+        <div class="card-body">
+          <h5 class="card-title">Une approche différente</h5>
+          <p class="card-text">Une approche permaculturelle consistant à penser des systèmes pour prendre soin de l’Humain et de la Nature, selon les principes du développement durable. Nous offrons une agriculture zéro pesticides et un système générant une alimentation de haute qualité nutritive.</p>
+        </div>
+      </div>
+      <div data-aos="flip-left" data-aos-duration="1000" class="card">
+        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
+        <div class="card-body">
+          <h5 class="card-title">Écologique</h5>
+          <p class="card-text">La production des cultures ne consommera que peu d’énergie : tendre vers l’autonomie énergétique, réduire les émissions de CO2, récupérer les énergies fatales, consommation d’énergie verte, …. et surtout une très faible consommation d’eau.</p>
+        </div>
+      </div>
+      <div data-aos="flip-left" data-aos-duration="1000" class="card">
+        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
+        <div class="card-body">
+          <h5 class="card-title">Solidaire</h5>
+          <p class="card-text">Développer et conserver le lien entre les individus à travers la solidarité et le partage est une priorité : favoriser l’insertion professionnelle, égalité homme-femme, l’intergénérationnel…. Nous voulons promouvoir et développer l’économie locale, écologique, sociale et solidaire.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
 
 
+<!-- <video autoplay="" muted="" loop="">
+  <source src="https://storage.coverr.co/videos/Th016ucHQ8ijQH4NOR3dto02K6g00iEgWdk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjA5NzEyMDMwfQ.zBx2VC1i2kSFAXAo29h5CnSkML4IY1PGwqoAqL-0668" type="video/mp4">
+  </video> -->

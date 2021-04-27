@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Liste de mes montres</h1>
+  <% @watches.each do |watch| %>
+  <ul>
+    <div class="col-md-4">
+      <%= cl_image_tag watch.model.photo.key, class:"w-100" %>
+    </div>
+    <li>Marque: <%= watch.brand.name %></li>
+    <li>Modèle: <%= watch.model.name %></li>
+    <li>Etat: <%= watch.condition_id %></li>
+    <li>Livrable: <%= watch.scope_id %></li>
+  </ul>
+  <% end %>
+</div>

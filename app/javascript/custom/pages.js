@@ -1,24 +1,6 @@
-console.log("Begin");
+console.log("Begin filter");
 
-// $(function () {
-//     var gameConsoleOptions = $('.watch_model_id option');
-//     console.log("Game " + gameConsoleOptions);
-//     $(".watch_brand_id").on("change", function () {
-//         var label = $(this).find("option:selected").closest('optgroup').prop('label');
-//         console.log("Label " + label);
-//         if (label) {
-//             gameConsoleOptions.hide();
-//             gameConsoleOptions.filter(function (i, v) {
-//                 return $(v).text() === label;
-//             }).show();
-//         } else {
-//             gameConsoleOptions.show();
-//         }
-//       console.log("Game After " + gameConsoleOptions);
-//     });
-// });
-
-$.fn.filterGroups = function( options ) {
+/*$.fn.filterGroups = function( options ) {
   var settings = $.extend( {}, options);
 
   return this.each(function(){
@@ -41,3 +23,4 @@ $.fn.filterGroups = function( options ) {
 $(function() {
   $('#watch_model_id').filterGroups({groupSelector: '#watch_brand_id', });
 });
+*/

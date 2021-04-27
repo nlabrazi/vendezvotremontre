@@ -6,5 +6,7 @@ Rails.application.routes.draw do
 
   resources :models
   resources :watches
+  resources :bookings
+  resources :dashboard, only: [:index]
 
 end
