@@ -4,6 +4,7 @@ class Watch < ApplicationRecord
   belongs_to :brand
   belongs_to :model
 
+  has_one_attached :photo
   has_many :booking
 
   def scope_watch

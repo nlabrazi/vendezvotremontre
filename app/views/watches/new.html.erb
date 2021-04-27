@@ -1,20 +1,17 @@
 <div class="container">
   <div class="header-estimate">
-    <!-- <#%= cl_image_tag landmark.photo.key, height: 218, width: 218 %> -->
-    <h2>Evaluation de votre montre</h2>
-    <div class="info-container">
-      <p> Brand: <%= @brand.name %> </p>
-      <p> Model: <%= @model.name %> </p>
-      <p>Price: $<%#= @estimate.price %>SUPRIIIISE </p>
-    </div>
+    <%#= cl_image_tag @watch.model.photo.key, height: 218, width: 218 %>
+   <div class="info-container">
+    <%= render 'formfor' %>
   </div>
-  <div class="title-review">
-    <h1>Planifier la vente :</h1>
-    <%= button_tag "Prendre RDV", class: "btn btn-primary", display: "none", id:"btnRdv" %>
-  </div>
-  <br>
-  <br>
-  <div id="myForm">
-    <%= render "bookform" %>
-  </div>
+</div>
+<div class="title-review">
+  <h1>Planifier la vente :</h1>
+  <%#= button_tag "Prendre RDV", class: "btn btn-primary", display: "none", id:"btnRdv" %>
+</div>
+<br>
+<br>
+<div id="myForm">
+  <%= render "bookform" %>
+</div>
 </div>

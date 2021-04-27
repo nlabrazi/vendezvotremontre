@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_03_213920) do
+ActiveRecord::Schema.define(version: 2021_04_26_010806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,12 +53,24 @@ ActiveRecord::Schema.define(version: 2021_01_03_213920) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "conditions", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "models", force: :cascade do |t|
     t.string "name"
     t.bigint "brand_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_models_on_brand_id"
+  end
+
+  create_table "scopes", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,14 +96,16 @@ ActiveRecord::Schema.define(version: 2021_01_03_213920) do
     t.bigint "user_id"
     t.bigint "brand_id"
     t.bigint "model_id"
+    t.bigint "scope_id"
+    t.bigint "condition_id"
     t.string "reference"
     t.integer "year"
-    t.integer "scope"
-    t.integer "condition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_watches_on_brand_id"
+    t.index ["condition_id"], name: "index_watches_on_condition_id"
     t.index ["model_id"], name: "index_watches_on_model_id"
+    t.index ["scope_id"], name: "index_watches_on_scope_id"
     t.index ["user_id"], name: "index_watches_on_user_id"
   end
 

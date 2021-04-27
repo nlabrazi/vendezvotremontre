@@ -1,20 +1,20 @@
 <% if current_user %>
-<h2>vous êtes identifié, info exact ?</h2>
-<%= simple_form_for @user, url: landmark_estimates_path do |f| %>
-<div class="form-input">
-  <%= f.input :first_name, as: :text %>
-  <%= f.input :email, as: :text %>
-  <%= f.input :phone, as: :text %>
-  <%= simple_form_for @estimate, url: landmark_estimates_path do |es| %>
-  <%= es.input :price, as: :text %>
-</div>
-<div class="form-action">
-  <%= f.submit "Valider", class: "btn btn-success" %>
-</div>
-<% end %>
-<% end %>
-<% else %>
-<div class="identify">
-  <%= link_to "Identifiez-vous", new_user_session_path, class: "button-form link" %>
-</div>
+  <h2>vous êtes identifié, info exact ?</h2>
+  <%= simple_form_for @user, url: new_watch_path do |f| %>
+  <div class="form-input">
+    <%= f.input :first_name, as: :text %>
+    <%= f.input :email, as: :text %>
+    <%= f.input :phone, as: :text %>
+    <!--   <%#= simple_form_for @estimate do |es| %>
+    <%#= es.input :price, as: :text %> -->
+  </div>
+  <div class="form-action">
+    <%= f.submit "Valider", class: "btn btn-success" %>
+  </div>
+  <%# end %>
+  <% end %>
+  <% else %>
+  <div class="identify">
+    <%= link_to "Identifiez-vous", new_user_session_path, class: "button-form link" %>
+  </div>
 <% end %>

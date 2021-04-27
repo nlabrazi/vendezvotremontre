@@ -1,3 +1,19 @@
+.JumbotronDisplay {
+  background-size: cover;
+  min-height: 400px;
+  min-width: 100%;
+  margin: 0;
+
+  h1,
+  h3 {
+    color: #03CEA4;
+  }
+  .cta:hover {
+    color: #e57c00;
+  }
+}
+
+/*
 video {
   position: absolute;
   top: 0;
@@ -9,18 +25,4 @@ video {
   -webkit-transofrm: translateY(-40%);
   transform: translateY(-40%);
 }
-
-.jumbotron {
-  height: 300px;
-  overflow: hidden;
-  position: relative;
-  color: white;
-}
-
-.container {
-  position: relative;
-}
-
-.black-box {
-  background-color: rgba(0,0,0,0.2);
-}
+*/
