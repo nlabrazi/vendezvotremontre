@@ -1,19 +1,42 @@
 <div class="container">
   <div class="header-estimate">
-    <%#= cl_image_tag @watch.model.photo.key, height: 218, width: 218 %>
     <h2>Evaluation de votre montre</h2>
     <div class="info-container">
-      <p> Brand: <%= @watch.brand %> </p>
-      <p> Model: <%= @watch.model %> </p>
+      <p> Brand: <%= @watch.brand.name %> </p>
+      <p> Model: <%= @watch.model.name %> </p>
     </div>
   </div>
   <div class="title-review">
-    <h1>Planifier la vente :</h1>
+    <h1>Planifier le RDV :</h1>
     <%= button_tag "Prendre RDV", class: "btn btn-primary", display: "none", id:"btnRdv" %>
   </div>
   <br>
   <br>
   <div id="myForm">
-    <%= render "bookform" %>
+    <div class="form-booking" id="form-booking">
+      <div class="form-wrapper">
+        <% if current_user %>
+        <%= simple_form_for [@watch, @booking], method: :post, remote: true do |f| %>
+        <%= f.input :watch_id, as: :hidden, :input_html => { :value => @watch.id } %>
+        <%= f.text_field :date,
+        placeholder:"Quel jour, quelle heure ?",
+        data: {
+          controller: "flatpickr",
+          flatpickr_alt_format: t("date.formats.long"),
+          flatpickr_date_format: "Y-m-d H:i",
+          #flatpickr_date_format: "H:i %B %d, %Y",
+          flatpickr_min_date: Time.zone.now,
+          flatpickr_enable_time: true
+        }
+        %>
+        <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+        <% else %>
+        <div class="identify">
+          <%= link_to "Identifiez-vous", new_user_session_path, class: "button-form link" %>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

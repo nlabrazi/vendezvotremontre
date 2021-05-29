@@ -1,6 +1,12 @@
 class WatchesController < ApplicationController
   skip_before_action :authenticate_user!, only: :new
 
+  def index
+    @watch = Watch.find(params[:id])
+    @booking = Booking.new
+    @bookings = Booking.where(watch_id: @watch.id)
+  end
+
   def new
     if current_user != nil
       @user = current_user

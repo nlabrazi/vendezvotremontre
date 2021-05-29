@@ -16,3 +16,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('load', AOS.refresh)
+
+import "controllers"
