@@ -7,7 +7,7 @@ class Watch < ApplicationRecord
   has_one_attached :photo
   has_many :booking
 
-  after_create :send_watch
+  #after_create :send_watch_whatsapp
 
   def scope_watch
     case scope
@@ -35,14 +35,10 @@ class Watch < ApplicationRecord
     end
   end
 
-  def send_watch
-    @client = Twilio::REST::Client.new
-    @client.messages.create({
-     media_url: ['https://images.unsplash.com/photo-1545093149-618ce3bcf49d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80https://res.cloudinary.com/nabs/image/upload/zh8uezkdhulk7960phr9gcf5mn4m'],
-     from: 'whatsapp:+14155238886',
-     to: 'whatsapp:+33786167270',
-     body: "Hello une nouvelle montre est arrivée go check !"
-   })
+  def send_watch_whatsapp
+    img_watch = Watch.last.model.photo.service_url
+    body_watch = (Watch.last.brand.name + ' ' + Watch.last.model.name)
+    TwilioClient.new.send_whatsapp(body_watch, img_watch)
   end
 
 end

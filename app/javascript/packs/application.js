@@ -7,6 +7,7 @@ require('@lottiefiles/lottie-player')
 
 // External imports
 import 'bootstrap';
+import 'controllers';
 import AOS from 'aos';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,4 +18,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 window.addEventListener('load', AOS.refresh)
 
-import "controllers"

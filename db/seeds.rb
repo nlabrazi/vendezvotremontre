@@ -23,6 +23,10 @@ p "Destroying Models... #{Model.count} "
 Model.destroy_all
 p "Destroying Brands... #{Brand.count} "
 Brand.destroy_all
+p "Destroying Scopes... #{Scope.count} "
+Scope.destroy_all
+p "Destroying Conditions... #{Condition.count} "
+Condition.destroy_all
 p "Destroying User... #{User.count} "
 User.destroy_all
 p "-----------------------"
@@ -39,6 +43,10 @@ user1.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'ima
 photo_user = URI.open("https://avatars3.githubusercontent.com/u/50252768?s=460&u=771234958e06149be6f3f50992b664cee81e1ce2&v=4")
 user2 = User.create! password: "123456", email: "nabster@yopmail.com", first_name: "Nabil", last_name: "GoodFellas", phone: "0652770555"
 user2.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'image/jpg')
+
+photo_user = URI.open("https://avatarfiles.alphacoders.com/733/73367.png")
+user3 = User.create! password: "123456", email: "vendezvotremontre@yopmail.com", first_name: "Admin", last_name: "Leboss", phone: "0650403020", is_admin: true
+user3.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'image/png')
 
 p "#{User.count} created..."
 p "-----------------------"

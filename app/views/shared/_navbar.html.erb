@@ -31,7 +31,7 @@
           	<%= link_to "Mon Profil", edit_user_registration_path, class: "dropdown-item" %>
           	<%= link_to "Tableau de Bord", dashboard_index_path, class: "dropdown-item" %>
             <% if current_user.is_admin? %>
-              <%= link_to "Editer mon profil d'admin", edit_artist_path(current_user.admin), class: "dropdown-item" %>
+              <%= link_to "Administration", admin_root_path, class: "dropdown-item" %>
             <% end %>
           	<div class="dropdown-divider"></div>
           	<%= link_to "Deconnexion", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

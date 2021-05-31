@@ -6,12 +6,7 @@ const initFlatPicker = () => {
   const bookingForm = document.getElementById('form-booking');
 
   if (bookingForm) {
-    flatpickr(".flatpickr", {
-      plugins: [new rangePlugin({ input: "#range_end"})],
-      minDate: "today",
-      enableTime: true,
-      dateFormat: "Y-m-d H:i",
-    });
+    flatpickr(".flatpickr", {});
   };
 };
 

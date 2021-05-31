@@ -1,4 +1,5 @@
 class Model < ApplicationRecord
+  include Rails.application.routes.url_helpers
 
   has_one_attached :photo
 
@@ -8,5 +9,9 @@ class Model < ApplicationRecord
   using: {
     tsearch: { prefix: true }
   }
+
+  def url_photo_model
+    rails_blob_path(model.photo, disposition: "attachment", only_path: true)
+  end
 
 end
