@@ -44,9 +44,9 @@ photo_user = URI.open("https://avatars3.githubusercontent.com/u/50252768?s=460&u
 user2 = User.create! password: "123456", email: "nabster@yopmail.com", first_name: "Nabil", last_name: "GoodFellas", phone: "0652770555"
 user2.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'image/jpg')
 
-photo_user = URI.open("https://avatarfiles.alphacoders.com/733/73367.png")
-user3 = User.create! password: "123456", email: "vendezvotremontre@yopmail.com", first_name: "Admin", last_name: "Leboss", phone: "0650403020", is_admin: true
-user3.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'image/png')
+photo_user = URI.open("https://pbs.twimg.com/profile_images/1014211496442843136/IWMl3QfY_400x400.jpg")
+user3 = User.create! password: "123456", email: "vendezvotremontre.fr@yopmail.com", first_name: "Admin", last_name: "Leboss", phone: "0650403020", is_admin: true
+user3.avatar.attach(io: photo_user, filename: 'user_picture', content_type: 'image/jpg')
 
 p "#{User.count} created..."
 p "-----------------------"
