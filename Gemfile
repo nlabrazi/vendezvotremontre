@@ -15,6 +15,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Custom GEM :
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
+gem 'simple_calendar'
 gem 'simple_form'
 gem 'devise'
 gem 'pundit'
@@ -28,6 +29,8 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'stripe'
 gem 'twilio-ruby'
+gem 'activeadmin'
+gem 'inherited_resources'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
