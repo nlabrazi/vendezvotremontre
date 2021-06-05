@@ -1,5 +1,5 @@
 class WatchesController < ApplicationController
-  skip_before_action :authenticate_user!, only: :new
+  skip_before_action :authenticate_user!, only: [:new, :create]
 
   def index
     @watch = Watch.find(params[:id])
@@ -8,22 +8,63 @@ class WatchesController < ApplicationController
   end
 
   def new
+    @brands = Brand.all
+    @models = []
+    @watch = Watch.new
     if current_user != nil
       @user = current_user
-      @last_name = current_user.last_name
-      @first_name = current_user.first_name
-      @email = current_user.email
       @phone = current_user.phone
+      @email = current_user.email
+      @first_name = current_user.first_name
     end
-    @watch = Watch.new
+    #   @user = User.create(
+    #     :phone => params[:temp_phone],
+    #     :email => params[:temp_email],
+    #     :first_name => params[:temp_first_name],
+    #     :password => "coucou"
+    #     )
+    # end
+    if params[:brand].present?
+      @models = Brand.find(params[:brand]).models
+    end
+    if request.xhr?
+      respond_to do |format|
+        format.json {
+          render json: {models: @models}
+        }
+      end
+    end
   end
 
   def create
-    @watch = Watch.new(watch_params)
-    @watch.user = current_user
-    if @watch.save
+    if current_user == nil
+      @user = User.create(
+        phone: params[:watch][:temp_phone],
+        email: params[:watch][:temp_email],
+        first_name: params[:watch][:temp_first_name],
+        password: "coucou"
+        )
+      if @user.save
+        @watch = Watch.new(watch_params)
+        @watch.user = User.last
+      else
+        puts "#{@user.errors.messages}"
+        puts "#{@user.errors.messages}"
+        puts "#{@user.errors.messages}"
+      end
+    else
+      @watch = Watch.new(watch_params)
+      @watch.user = current_user
+    end
+    #@watch = Watch.new(watch_params)
+    #@watch.user = current_user
+    if @watch.save && current_user !=nil
       flash.notice = "Nous connaissons cette montre, passons à la suite!"
       redirect_to dashboard_index_path
+    elsif
+      @watch.save && current_user == nil
+      flash.notice = "Nous connaissons cette montre, veuillez vous connecter pour continuer"
+      redirect_to root_path
     else
       flash.alert = "Une erreur est survenue #{@watch.errors.messages}"
       redirect_to root_path
@@ -35,7 +76,7 @@ class WatchesController < ApplicationController
   end
 
   def watch_params
-    params.require(:watch).permit(:model_id, :brand_id, :condition_id, :scope_id)
+    params.require(:watch).permit(:model_id, :brand_id, :condition_id, :scope_id, :temp_email, :temp_phone, :temp_first_name)
   end
 
 end

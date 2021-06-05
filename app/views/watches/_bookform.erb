@@ -1,5 +1,5 @@
 <% if current_user %>
-<h2>Vous êtes identifié, c'est un plaisir de vous revoir </h2>
+<h2> Bonjour <%= @user.first_name %> c'est un plaisir de vous revoir </h2>
 <%= simple_form_for @user, url: new_watch_path do |f| %>
 <div class="form-input">
   <%= f.input :first_name, label: "Prénom", disabled: true %>
@@ -9,17 +9,8 @@
 <% end %>
 <% else %>
 <div class="identify">
-  <h2>Information complémentaire</h2>
-
-  <div class="form-inputs ">
-    <%= form_with url: new_watch_path do |f| %>
-    <%= f.text_field :first_name, label: 'Nom' %>
-    <%= f.text_field :email, label: 'Email' %>
-    <%= f.text_field :phone, as: :text, input_html: {rows: 7 , style: 'width: 100%'}, placeholder: "Votre message..." %>
-    <%= f.submit "Envoyer" %>
-<% end %>
-  </div>
-
+  <h2>Information complémentaire requises</h2>
 </div>
 <% end %>
+<br>
 <br>
