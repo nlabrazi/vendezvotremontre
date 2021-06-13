@@ -1,6 +1,6 @@
 .navbar-mainbar {
   justify-content: space-between;
-  background: $color-dark-grey;
+  background: $color-purple;
   position: sticky;
   top: 0;
   left:0;
@@ -16,14 +16,14 @@
 }
 
 .navbar-a {
-  color: $color-light-blue;
+  color: white;
   &:hover {
     color: $color-light-blue;
   }
 }
 
 .nav-link {
-  color: $color-light-blue;
+  color: white
 }
 
 
@@ -39,5 +39,5 @@
 }
 
 h1 {
-  color: $color-light-blue;
+  color: white
 }

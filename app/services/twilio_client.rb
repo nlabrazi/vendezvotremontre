@@ -13,7 +13,7 @@ class TwilioClient
      from: 'whatsapp:+14155238886',
      #to: 'whatsapp:+33698843255',
      to: 'whatsapp:+33786167270',
-     body: "Hello une nouvelle montre est arrivée il s'agit de #{body_watch} vérifie ici #{url} !"
+     body: "Hello une nouvelle montre est arrivée il s'agit d'une #{body_watch} vérifie ici #{url} !"
    })
   end
 

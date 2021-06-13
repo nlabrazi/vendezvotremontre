@@ -8,6 +8,7 @@ require("turbolinks").start()
 import 'bootstrap';
 import 'controllers';
 import AOS from 'aos';
+import { previewImage } from '../plugins/preview_image';
 import { initFilter } from '../plugins/init_filter';
 
 // Turbolinks load

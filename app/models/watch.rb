@@ -7,7 +7,7 @@ class Watch < ApplicationRecord
   has_one_attached :photo
   has_many :booking
 
-  #after_create :send_watch_whatsapp
+  after_create :send_watch_whatsapp
 
   def scope_watch
     case scope

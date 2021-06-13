@@ -14,7 +14,7 @@ const initFilter = () => {
         console.error('AJAX Error: ' + status + error);
       },
       success: function (response) {
-        console.log(response);
+        //console.log(response);
         var models = response["models"];
         $(".select-watch-model").empty();
 
