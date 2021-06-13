@@ -1,20 +1,28 @@
+require("channels")
+require('@lottiefiles/lottie-player')
+require("@rails/activestorage").start()
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
-require("custom/pages")
-require('@lottiefiles/lottie-player')
 
 // External imports
 import 'bootstrap';
 import 'controllers';
 import AOS from 'aos';
+import { previewImage } from '../plugins/preview_image';
+import { initFilter } from '../plugins/init_filter';
 
-document.addEventListener('DOMContentLoaded', function() {
+// Turbolinks load
+document.addEventListener("turbolinks:load", function() {
+  initFilter();
+  AOS.init();
+});
+
+
+
+/*document.addEventListener('DOMContentLoaded', function() {
   AOS.init({
     startEvent: 'turbolinks:load' // if you are using turbolinks
   });
 });
-
-window.addEventListener('load', AOS.refresh)
+window.addEventListener('load', AOS.refresh)*/
 

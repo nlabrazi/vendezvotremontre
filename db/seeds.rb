@@ -56,10 +56,10 @@ puts "#{tp User.all}"
 
 p "Creating scopes..."
 
-Full    = Scope.create! name:"Full Set", id: 1
-Paper   = Scope.create! name:"Papers",   id: 2
-Box     = Scope.create! name:"Box",      id: 3
-Nothing = Scope.create! name:"Nothing",  id: 4
+Full    = Scope.create! name:"Montre avec coffret et papiers d'origine", id: 1
+Paper   = Scope.create! name:"Montre avec papiers d'origine",            id: 2
+Box     = Scope.create! name:"Montre avec boite d'origine",              id: 3
+Nothing = Scope.create! name:"Montre uniquement",                        id: 4
 
 p "#{Scope.count} created..."
 p "-----------------------"
@@ -70,10 +70,10 @@ puts "#{tp Scope.all}"
 
 p "Creating conditions..."
 
-New    = Condition.create! name:"New",    id: 1
-Good   = Condition.create! name:"Good",   id: 2
-Bad    = Condition.create! name:"Bad",    id: 3
-Broken = Condition.create! name:"Broken", id: 4
+New    = Condition.create! name:"Neuf (sans traces d'usure)",     id: 1
+Good   = Condition.create! name:"Bon (traces d'usure légères",    id: 2
+Bad    = Condition.create! name:"Mauvais (fortement usagée)",     id: 3
+Broken = Condition.create! name:"Incomplet (éléments manquants)", id: 4
 
 p "#{Condition.count} created..."
 p "-----------------------"

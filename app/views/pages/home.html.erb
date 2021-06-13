@@ -1,73 +1,67 @@
 <div class="homehome">
 
-  <div class="JumbotronDisplay jumbotron">
-    <div class="top-home">
-      <div class="p-0 m-0 row">
-        <div class="Jumbotron_col d-flex flex-column justify-content-center align-items-center text-center col-md-6 col-12">
-          <h1 class="display-4">Évaluation gratuite de votre montre en 2 étapes</h1>
-          <h3>La vie n’est pas un problème, c’est une solution</h3>
-          <div class="my-5">
-            <%= link_to "Estimer maintenant >", new_watch_path, class: "btn-flat btn btn-lg"  %>
+  <div class="JumbotronHome jumbotron jumbotron-fluid">
+    <video loop="" autoplay="">
+      <source src="home.mp4" type="video/mp4">
+      </video>
+      <div class="container jumbotron-home-text">
+        <h1 class="display-4">Vendre votre montre en toute sécurité et rapidement</h1>
+        <h3>La vie n’est pas un problème, c’est une solution</h3>
+        <div class="my-5">
+          <%= link_to "Estimer maintenant >", new_watch_path, class: "btn-flat btn btn-lg"  %>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-home mr-5 ml-5">
+      <div class="card-group">
+        <div data-aos="flip-left" data-aos-duration="1000" class="card card-main-home mr-2 ml-2">
+          <div class="card-body-home">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
+          <img class="card-img-bot" src="https://images.unsplash.com/photo-1472417583565-62e7bdeda490?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" alt="Card image cap">
         </div>
-        <div class="Jumbotron_col d-lg-block col-md-6">
-          <div>
-            <div title="" role="button" aria-label="animation" tabindex="0" style="width: 100%; height: 100%; overflow: hidden; margin: 0px auto; outline: none;">
-              <lottie-player
-                autoplay
-                loop
-                mode="normal"
-                src="https://assets9.lottiefiles.com/packages/lf20_TLf4S8.json">
-              </lottie-player>
-            </div>
+        <div data-aos="flip-right" data-aos-duration="1000" class="card card-main-home mr-2 ml-2">
+          <div class="card-body-home">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           </div>
+          <img class="card-img-bot" src="https://images.unsplash.com/photo-1472417583565-62e7bdeda490?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" alt="Card image cap">
+        </div>
+        <div data-aos="flip-left" data-aos-duration="1000" class="card card-main-home mr-2 ml-2">
+          <div class="card-body-home">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <img class="card-img-bot" src="https://images.unsplash.com/photo-1472417583565-62e7bdeda490?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" alt="Card image cap">
+        </div>
+        <div data-aos="flip-right" data-aos-duration="1000" class="card card-main-home mr-2 ml-2">
+          <div class="card-body-home">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          <img class="card-img-bot" src="https://images.unsplash.com/photo-1472417583565-62e7bdeda490?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1" alt="Card image cap">
         </div>
       </div>
     </div>
-  </div>
 
-  <div class='container'>
-    <div data-aos="fade-up" data-aos-duration="5000" class="card mb-3 second-bloc">
-      <div id='bloc-max-width'>
-        <%= cl_image_tag("https://images.unsplash.com/photo-1523170335258-f5ed11844a49?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8", style:"max-width:100%") %>
+    <div class="arguments" data-aos="fade-up" data-aos-duration="5000">
+      <div class="arg-1">
+        <%= image_tag "quality.png", alt: "alttext", :class => "check" %>
+        <p class="mb-3 title-arg">Les meilleurs montres</p>
+        <p class="text-center title-arg-light">Le meilleur de nos montres directement chez vous.</p>
       </div>
-      <div>
-        <h2> Laborum irure reprehenderit officia sunt ut. </h2>
-          <p> Deserunt magna in ea ea ex occaecat incididunt ullamco ut culpa nisi in laborum anim magna quis nisi elit eiusmod ut anim veniam nulla eiusmod sit pariatur consequat in enim excepteur nostrud anim incididunt. </p>
-        <p> Dolor in adipisicing. </p>
+      <div class="arg-1">
+        <%= image_tag "fast.png", alt: "alttext", :class => "check" %>
+        <p class="mb-3 title-arg">Service rapide</p>
+        <p class="text-center title-arg-light">Evaluez votre et vendez-la dans la journée</p>
       </div>
-    </div>
-  </div>
-
-  <div class="third-bloc mb-5">
-    <div class="third-bloc-child">
-      <div data-aos="flip-left" data-aos-duration="1000" class="card">
-        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
-        <div class="card-body">
-          <h5 class="card-title">Deserunt magna sed cupidatat.</h5>
-          <p class="card-text">Eu irure cillum sint in dolore laboris quis pariatur occaecat consequat anim laboris nulla in qui eu est irure incididunt in reprehenderit proident duis nulla eiusmod in proident fugiat irure velit labore quis consequat dolor non.</p>
-        </div>
-      </div>
-      <div data-aos="flip-left" data-aos-duration="1000" class="card">
-        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
-        <div class="card-body">
-          <h5 class="card-title">Lorem ipsum</h5>
-          <p class="card-text">In sint nisi elit mollit mollit ullamco magna in et culpa sunt laborum nisi voluptate fugiat magna officia ullamco do laborum consequat.</p>
-        </div>
-      </div>
-      <div data-aos="flip-left" data-aos-duration="1000" class="card">
-        <%= image_tag "check.svg", alt: "alttext", :class => "check" %>
-        <div class="card-body">
-          <h5 class="card-title">Duis cupidatat aute</h5>
-          <p class="card-text">Reprehenderit duis enim enim qui esse irure non nisi commodo dolore eiusmod reprehenderit tempor laborum aliqua ut dolore enim aute nisi dolore eiusmod fugiat minim minim fugiat qui adipisicing sint ullamco magna.</p>
-        </div>
+      <div class="arg-1">
+        <%= image_tag "money.png", alt: "alttext", :class => "check" %>
+        <p class="mb-3 title-arg">Meilleur prix</p>
+        <p class="text-center title-arg-light">Laboris laborum mollit voluptate commodo.</p>
       </div>
     </div>
+
   </div>
-
-</div>
-
-
-<!-- <video autoplay="" muted="" loop="">
-  <source src="https://storage.coverr.co/videos/Th016ucHQ8ijQH4NOR3dto02K6g00iEgWdk?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6Ijg3NjdFMzIzRjlGQzEzN0E4QTAyIiwiaWF0IjoxNjA5NzEyMDMwfQ.zBx2VC1i2kSFAXAo29h5CnSkML4IY1PGwqoAqL-0668" type="video/mp4">
-  </video> -->

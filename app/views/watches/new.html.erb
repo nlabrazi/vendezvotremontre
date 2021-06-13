@@ -1,12 +1,79 @@
 <div class="container">
-  <div class="header-estimate">
-   <div class="info-container">
-    <%= render 'formfor' %>
+  <div class="home-top-form">
+    <h1 class="text-center text-sm-left m-b-3">
+    Evaluation de votre montre en quelques secondes !</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <%= simple_form_for @watch do |f| %>
+        <%= f.label :brand_id, "Selectionnez la Marque" %><br />
+        <%= f.collection_select :brand_id, Brand.order(:name), :id, :name, {prompt: "Marque"}, {class: "form-control form-control-lg select-watch-brand"} %>
+        <br>
+        <%= f.label :model_id, "Choisissez le Modèle" %><br />
+        <%= f.grouped_collection_select :model_id, Brand.order(:name), :models, :name, :id, :name, {prompt: "Modèle"}, {class: "form-control form-control-lg select-watch-model"} %>
+        <br>
+        <%= f.label :condition_id, "Etat de la montre" %><br />
+        <%= f.collection_select :condition_id, Condition.order(:id), :id, :name, {prompt: "Etat"}, {class: "form-control form-control-lg"} %>
+        <br>
+        <%= f.label :scope_id, "Contenu livré" %><br />
+        <%= f.collection_select :scope_id, Scope.order(:id), :id, :name, {prompt: "Livrable"}, {class: "form-control form-control-lg"} %>
+        <br>
+        <hr class="m-t-5">
+        <br>
+        <div class="identify">
+          <h2>Information complémentaire requises</h2>
+        </div>
+        <% if current_user == nil %>
+        <%= f.input :temp_first_name, label: "Prénom" %>
+        <%= f.input :temp_email, label: "Email" %>
+        <%= f.input :temp_phone, label: "Téléphone" %>
+        <% end %>
+        <br>
+        <br>
+        <div class="home-top-btn">
+          <%= f.button :submit, "Estimer votre montre", class: "btn btn-primary btn-lg" %>
+        </div>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <div class="card covered">
+          <div class="card-header">
+            <img src="https://static.chrono24.com/images/default/no-picture420.gif" class="full-width" id="image-estimate-watch">
+          </div>
+          <div class="card-body p-x-3 p-b-3">
+            <p class="text-uppercase m-b-0 text-muted">
+              Nom
+            </p>
+            <p class="text-lg">
+              Rolex Hulk
+            </p>
+            <p class="text-uppercase m-b-0 text-muted">
+              Prix
+            </p>
+            <p class="text-lg">
+              0,00&nbsp;€
+            </p>
+            <hr class="m-t-5">
+            <button name="saveDraft" formnovalidate="formnovalidate" type="submit" class="btn btn-secondary full-width m-t-3" id="testzer">
+              Ajouter une photo
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="title-review">
+      <%= render 'bookform' %>
+    </div>
   </div>
 </div>
-<div class="title-review">
-  <%= render 'bookform' %>
-</div>
-  <br>
-  <br>
-</div>
+
+
+<script>
+  console.log("Preview Image");
+
+  var selectElem = document.getElementsByClassName('select-watch-model');
+  addEventListener('change', test);
+
+  function test() {
+    console.log(selectElem);
+  }
+</script>

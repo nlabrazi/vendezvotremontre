@@ -7,31 +7,31 @@ class Watch < ApplicationRecord
   has_one_attached :photo
   has_many :booking
 
-  #after_create :send_watch_whatsapp
+  after_create :send_watch_whatsapp
 
   def scope_watch
     case scope
     when 1
-      "Full Set"
+      "Montre avec coffret et papiers d'origine"
     when 2
-      "Papers"
+      "Montre avec papiers d'origine"
     when 3
-      "Box"
+      "Montre avec boite d'origine"
     when 4
-      "Nothing"
+      "Montre uniquement"
     end
   end
 
   def state_watch
     case state
     when 1
-      "New"
+      "Neuf (sans traces d'usure)"
     when 2
-      "Good"
+      "Bon (traces d'usure légères"
     when 3
-      "Bad"
+      "Mauvais (fortement usagée)"
     when 4
-      "Broken"
+      "Incomplet (éléments manquants)"
     end
   end
 
