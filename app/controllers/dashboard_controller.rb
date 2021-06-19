@@ -3,8 +3,9 @@ class DashboardController < ApplicationController
 
   def index
     @user = current_user
-    @watches = current_user.watches
-    @bookings = current_user.bookings
+    @watches = @user.watches
+    @bookings = @user.bookings
+    #@condition = condition.name
   end
 
 end

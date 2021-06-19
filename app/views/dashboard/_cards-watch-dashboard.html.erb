@@ -1,0 +1,34 @@
+    <h1>Liste de mes montres</h1>
+    <% @watches.each do |watch| %>
+    <div class="card-watch">
+      <%= cl_image_tag watch.model.photo.key, id: "watch_photo", 'aria-haspopup': true, 'aria-expanded': false %>
+      <div class="card-watch-infos">
+        <h3><%= watch.brand.name %></h3>
+        <p class="details" style="font-size:20px">
+          <ul>
+            <li>Modèle: <%= watch.model.name %></li>
+            <li>Etat: <%= watch.condition_id %></li>
+            <li>Livrable: <%= watch.scope_id %></li>
+          </ul>
+        </p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-auto">
+              <%= link_to 'Plus de détails', root_path, class: "btn btn-primary" %>
+            </div>
+            <div class="col-md-auto">
+             <%= link_to "Prendre RDV", new_watch_booking_path(watch), class: "btn btn-primary" %>
+           </div>
+           <% if current_user == watch.user_id %>
+           <div class="col-md-auto">
+            <%= link_to 'Modifier ma montre', root_path, class: "btn btn-primary" %>
+          </div>
+          <% end %>
+          <div class="col-md-auto">
+            <button class="btn btn-primary"> Montre ajoutée le : <%= watch.created_at.strftime("%d-%m-%Y") %> </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

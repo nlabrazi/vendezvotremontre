@@ -1,5 +1,5 @@
 .card-group {
-
+  //nothing
 }
 
 .card-main-home {
@@ -8,4 +8,33 @@
 
 .card-body-home {
   background-color: $color-purple;
+}
+
+.card-watch {
+  color: black;
+  overflow: hidden;
+  height: 200px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  margin: 4% 0;
+  border-radius: 15px;
+  border: solid 3px purple;
+}
+
+.card-watch:hover {
+  transform: scale(1.03);
+  transition: ease 0.5s;
+  background-color: grey;
+}
+
+.card-watch img {
+  height: 100%;
+  width: 180px;
+  object-fit: cover;
+}
+
+.card-watch .card-watch-infos {
+  padding: 16px;
 }

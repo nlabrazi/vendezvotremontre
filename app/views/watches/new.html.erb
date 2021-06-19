@@ -20,18 +20,21 @@
         <hr class="m-t-5">
         <br>
         <div class="identify">
-          <h2>Information complémentaire requises</h2>
         </div>
         <% if current_user == nil %>
+        <h2>Information complémentaire requises</h2>
         <%= f.input :temp_first_name, label: "Prénom" %>
         <%= f.input :temp_email, label: "Email" %>
         <%= f.input :temp_phone, label: "Téléphone" %>
-        <% end %>
-        <br>
-        <br>
         <div class="home-top-btn">
           <%= f.button :submit, "Estimer votre montre", class: "btn btn-primary btn-lg" %>
         </div>
+        <br>
+        <% else %>
+        <div class="title-review">
+          <%= render 'bookform' %>
+        </div>
+        <% end %>
         <% end %>
       </div>
       <div class="col-sm-4">
@@ -60,12 +63,8 @@
         </div>
       </div>
     </div>
-    <div class="title-review">
-      <%= render 'bookform' %>
-    </div>
   </div>
 </div>
-
 
 <script>
   console.log("Preview Image");
@@ -74,6 +73,9 @@
   addEventListener('change', test);
 
   function test() {
-    console.log(selectElem);
+    console.log(selectElem[0][0].label);
+    var img = document.getElementById("image-estimate-watch");
+    img.src = "https://loftsintown.be/wcb_uploads/2020/07/comiong-soon.jpg"; //this.value;
+    return false;
   }
 </script>

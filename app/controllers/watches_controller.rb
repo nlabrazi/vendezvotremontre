@@ -7,10 +7,17 @@ class WatchesController < ApplicationController
     @bookings = Booking.where(watch_id: @watch.id)
   end
 
+  def show
+    @watch = Watch.find(params[:id])
+  end
+
   def new
     @brands = Brand.all
     @models = []
     @watch = Watch.new
+
+    # @photo = @watch.model.photo.service_url
+
     if current_user != nil
       @user = current_user
       @phone = current_user.phone

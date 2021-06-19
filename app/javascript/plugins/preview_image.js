@@ -2,13 +2,23 @@ const previewImage = () => {
 
   console.log("Preview Image");
 
-  var selectElem = document.getElementsByClassName('select-watch-model');
-  addEventListener('change', test);
+  $(document).on("change", ".select-watch-model", function(){
+    var model = $(this).val();
 
-  function test() {
-    console.log(selectElem);
-  }
+    $.ajax({
+      url: "/watches/new",
+      method: "GET",
+      dataType: "json",
+      data: {model: model},
+      error: function (xhr, status, error) {
+        console.error('AJAX Error: ' + status + error);
+      },
+      success: function (response) {
+        console.log(response);
+      }
+    });
+  });
 
-}
+};
 
 export { previewImage };

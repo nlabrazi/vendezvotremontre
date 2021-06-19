@@ -1,28 +1,31 @@
 <div class="container">
   <div class="my-watches">
-    <h1>Liste de mes montres</h1>
-    <% @watches.each do |watch| %>
-    <ul>
-      <div class="col-md-4">
-        <%= cl_image_tag watch.model.photo.key, class:"w-100" %>
+
+    <div class="nav nav-pills justify-content-center" id="v-pills-tab" role="tablist" aria-orientation="horizontal">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+      <a class="nav-link" id="my-watches-tab" data-toggle="pill" href="#my-watches" role="tab" aria-controls="my-watches" aria-selected="false">Mes Montres</a>
+      <a class="nav-link" id="my-bookings-tab" data-toggle="pill" href="#my-bookings" role="tab" aria-controls="my-bookings" aria-selected="false">Mes Rendez-vous</a>
+      <a class="nav-link" id="settings-tab" data-toggle="pill" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Paramètres</a>
+    </div>
+
+    <div class="tab-content p-10" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        <h1>Mon Dashboard</h1>
+        <p class="">Welcome to your dashboard !</p>
       </div>
-      <li>Marque: <%= watch.brand.name %></li>
-      <li>Modèle: <%= watch.model.name %></li>
-      <li>Etat: <%= watch.condition_id %></li>
-      <li>Livrable: <%= watch.scope_id %></li>
-    </ul>
-    <div>
-     <%= link_to "Prendre RDV", new_watch_booking_path(watch), class: "btn btn-primary" %>
-   </div>
-   <% end %>
- </div>
- <div class="my-booking">
-  <h1>Liste de mes RDV</h1>
-  <% @bookings.each do |booking| %>
-  <ul>
-    <li>Date: <%= booking.date %></li>
-    <li>Montre: <%= booking.watch_id %></li>
-  </ul>
-  <% end %>
-</div>
+
+      <div class="tab-pane fade" id="my-watches" role="tabpanel" aria-labelledby="my-watches-tab">
+        <%= render 'cards-watch-dashboard' %>
+      </div>
+      <div class="tab-pane fade" id="my-bookings" role="tabpanel" aria-labelledby="my-bookings-tab">
+        <%= render 'bookings-form-dashboard' %>
+      </div>
+
+      <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+        <h1>Paramètres</h1>
+        <p class="">Welcome to your settings !</p>
+      </div>
+    </div>
+
+  </div>
 </div>
