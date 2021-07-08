@@ -41,3 +41,64 @@
 h1 {
   color: white
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-item.dropdown {
+  text-align: center;
+}
+
+
+
+/* ############################################################### */
+/* ################### Media Queries ############################ */
+
+  @media (max-width: 991px) {
+    .navbar-main {
+      flex-direction: column;
+    }
+    .btn-dropdown {
+      width: 100%;
+      text-align: center;
+      margin:3px 0;
+    }
+
+    .btn-ghost {
+      width: 100%;
+      text-align: center;
+      margin:3px 0;
+    }
+
+    #user-menu {
+      position: static!important;
+    }
+
+    #user-status {
+      display:none;
+    }
+
+    #navbarDropdown {
+      width:100px;
+    }
+
+    #logo-farm-square {
+      width: 100px;
+      height:100px;
+    }
+
+    #navbarSupported {
+      margin:10px 0;
+    }
+  }
