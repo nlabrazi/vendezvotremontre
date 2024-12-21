@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
+require "dotenv"
+Dotenv.load
+
+ActionMailer::Base.perform_deliveries = false
 
 p " ********************************* "
 p " *                               * "
@@ -175,3 +179,5 @@ p "TOTAL #{User.count} users created"
 p "TOTAL #{Brand.count} brands created"
 p "TOTAL #{Model.count} models created"
 p "TOTAL #{Watch.count} watches created"
+
+ActionMailer::Base.perform_deliveries = true
