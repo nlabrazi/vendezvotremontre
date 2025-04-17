@@ -5,7 +5,7 @@ ruby '3.1.2'
 
 gem 'rails', '~> 7.0', '>= 7.0.4.2'
 gem 'pg', '~> 1.4', '>= 1.4.5'
-gem 'puma', '~> 6.0', '>= 6.0.2'
+gem 'puma', '~> 6.4'
 gem 'sass-rails', '~> 6.0'
 gem 'webpacker', '~> 5.4', '>= 5.4.3'
 gem 'turbolinks', '~> 5.2', '>= 5.2.1'
