@@ -1,0 +1,36 @@
+version: "3.9"
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: vendezvotremontre_development
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready", "-U", "postgres" ]
+      interval: 5s
+      retries: 5
+
+  web:
+    build: .
+    command: [ "bash", "-c", "rails db:create db:migrate db:seed && rails server -b 0.0.0.0" ]
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: password
+      VENDEZVOTREMONTRE_DATABASE_USER: vendezvotremontre
+      VENDEZVOTREMONTRE_DATABASE_PASSWORD: password
+
+volumes:
+  postgres_data:
