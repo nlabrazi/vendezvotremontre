@@ -1,12 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require "open-uri"
 require "dotenv"
+require 'net/http'
+require 'uri'
+
+def download_image(url, filename)
+  filepath = Rails.root.join("tmp", filename)
+
+  # Télécharger l'image avec curl
+  system("curl -L -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36' '#{url}' -o '#{filepath}'")
+
+  # Vérifier si le fichier a bien été téléchargé
+  if File.exist?(filepath)
+    File.open(filepath)
+  else
+    raise "Échec du téléchargement de l'image depuis #{url}"
+  end
+end
+
 Dotenv.load
 
 ActionMailer::Base.perform_deliveries = false
@@ -105,60 +115,60 @@ puts "#{tp Brand.all}"
 
 p "Creating models..."
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_32/s3/3514332_xxl.jpg")
-model1 = Model.create! brand_id: 1,    name: "Submariner"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_32/s3/3514332_xxl.jpg", "submariner.jpg")
+model1 = Model.create!(brand_id: 1, name: "Submariner")
 model1.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_63/s0/11376063_xxl_v1559519862199.jpg")
-model2 = Model.create! brand_id: 1,    name: "Hulk"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_63/s0/11376063_xxl_v1559519862199.jpg", "hulk.jpg")
+model2 = Model.create!(brand_id: 1, name: "Hulk")
 model2.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_32/s4/11763432_xxl_v1564056434638.jpg")
-model3 = Model.create! brand_id: 2,     name: "Date Engine"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_32/s4/11763432_xxl_v1564056434638.jpg", "date engine.jpg")
+model3 = Model.create!(brand_id: 2, name: "Date Engine")
 model3.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/15564090-be44ybg21ildc0zso6f9jfyq-ExtraLarge.jpg")
-model4 = Model.create! brand_id: 2,     name: "Oris montre Y"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/15564090-be44ybg21ildc0zso6f9jfyq-ExtraLarge.jpg", "oris montre y.jpg")
+model4 = Model.create!(brand_id: 2, name: "Oris montre Y")
 model4.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/15869519-hnyb0ux8qgas90lrsfh4n2gi-ExtraLarge.jpg")
-model5 = Model.create! brand_id: 3,      name: "IWC montre C"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/15869519-hnyb0ux8qgas90lrsfh4n2gi-ExtraLarge.jpg", "iwc montre c.jpg")
+model5 = Model.create!(brand_id: 3, name: "IWC montre C")
 model5.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_51/s6/9489651_xxl.jpg")
-model6 = Model.create! brand_id: 3,      name: "IWC montre X"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_51/s6/9489651_xxl.jpg", "iwc montre x.jpg")
+model6 = Model.create!(brand_id: 3, name: "IWC montre X")
 model6.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/9447672-ob6jnlc589fzx2dviza98xwl-ExtraLarge.jpg")
-model7 = Model.create! brand_id: 4,    name: "Astron"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/9447672-ob6jnlc589fzx2dviza98xwl-ExtraLarge.jpg", "astron.jpg")
+model7 = Model.create!(brand_id: 4, name: "Astron")
 model7.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/14958910-5ldvwjpp6q34ed0huiojzr1g-ExtraLarge.jpg")
-model8 = Model.create! brand_id: 4,    name: "Seiko montre W"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/14958910-5ldvwjpp6q34ed0huiojzr1g-ExtraLarge.jpg", "seiko montre w.jpg")
+model8 = Model.create!(brand_id: 4, name: "Seiko montre W")
 model8.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_20/s3/4997320_xxl.jpg")
-model9 = Model.create! brand_id: 5, name: "Hydroconquest"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_20/s3/4997320_xxl.jpg", "hydroconquest.jpg")
+model9 = Model.create!(brand_id: 5, name: "Hydroconquest")
 model9.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/15494335-s4mqy7u0tfkucz89tafbb5hq-ExtraLarge.jpg")
-model10 = Model.create! brand_id: 5, name: "Longines montre V"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/15494335-s4mqy7u0tfkucz89tafbb5hq-ExtraLarge.jpg", "longines montre v.jpg")
+model10 = Model.create!(brand_id: 5, name: "Longines montre V")
 model10.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/15840524-cpqqlreal42coxnjqd7zze37-ExtraLarge.jpg")
-model11 = Model.create! brand_id: 6,   name: "Tourbillon"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/15840524-cpqqlreal42coxnjqd7zze37-ExtraLarge.jpg", "tourbillon.jpg")
+model11 = Model.create!(brand_id: 6, name: "Tourbillon")
 model11.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/images_60/s1/10895160_xxl_v1554361797854.jpg")
-model12 = Model.create! brand_id: 6,   name: "Hublot montre U"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/images_60/s1/10895160_xxl_v1554361797854.jpg", "hublot montre u.jpg")
+model12 = Model.create!(brand_id: 6, name: "Hublot montre U")
 model12.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/11282057-06m9rbdwupv2va5phrmyxelv-Large.jpg")
-model13 = Model.create! brand_id: 7,    name: "Constellation"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/11282057-06m9rbdwupv2va5phrmyxelv-Large.jpg", "constellation.jpg")
+model13 = Model.create!(brand_id: 7, name: "Constellation")
 model13.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
-photo_model = URI.open("https://cdn2.chrono24.com/images/uhren/15255107-ipfe55jmigrhf7m4dwfisykx-ExtraLarge.jpg")
-model13 = Model.create! brand_id: 7,    name: "Omega montre T"
+photo_model = download_image("https://cdn2.chrono24.com/images/uhren/15255107-ipfe55jmigrhf7m4dwfisykx-ExtraLarge.jpg", "omega montre t.jpg")
+model13 = Model.create!(brand_id: 7, name: "Omega montre T")
 model13.photo.attach(io: photo_model, filename: 'model_picture', content_type: 'image/jpg')
 
 p "#{Model.count} created..."
